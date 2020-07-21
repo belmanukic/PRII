@@ -204,22 +204,20 @@ public:
 		}
 		_poglavljaRada.push_back(Poglavlje(naslov.c_str(), sadrzaj.c_str()));
 	}
-	bool OcijeniPoglavlje(string naslov, int ocjena) {
-		//posto je u mainu try-catch, i ima uslov, koristimo bool
+	void OcijeniPoglavlje(string naslov, int ocjena) {
 		bool postojiPoglavlje = false;
 		for (vector<Poglavlje>::iterator i = _poglavljaRada.begin(); i < _poglavljaRada.end(); i++)
 		{
 			if (i->GetNaslov() == naslov) {
 				i->OcijeniPoglavlje(ocjena);
 				postojiPoglavlje = true;
-				return true;
+				return;
 			}
 		}
 		if (!postojiPoglavlje) {
 			//koristimo jer ima try catch u mainu.
 			throw exception("Ovo poglavlje ne postoji. ");
 		}
-		return false;
 	}
 };
 
@@ -404,5 +402,4 @@ int main() {
 	system("pause");
 	return 0;
 }
-
 
